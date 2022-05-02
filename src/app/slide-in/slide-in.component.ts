@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-slide-in',
@@ -6,6 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./slide-in.component.css'],
 })
 export class SlideInComponent {
+  constructor(public viewContainer: ViewContainerRef) {}
+
   @Input()
   show = false;
 }
