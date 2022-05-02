@@ -1,0 +1,21 @@
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  display: grid;
+  justify-items: center;
+}
+
+div {
+  position: absolute;
+  transform: translate(0%, -100%);
+  opacity: 0;
+  transition-property: transform, opacity;
+  transition-duration: 1s;
+}
+
+div.slide-in {
+  transform: translate(0, 10px);
+  opacity: 1;
+}
