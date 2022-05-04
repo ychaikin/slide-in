@@ -1,8 +1,8 @@
 import {
-  AfterContentInit,
+  AfterViewInit,
+  ComponentRef,
   Directive,
-  EmbeddedViewRef,
-  OnInit,
+  Input,
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
@@ -11,38 +11,21 @@ import { SlideInComponent } from '../slide-in/slide-in.component';
 @Directive({
   selector: '[appSlideOutDir]',
 })
-export class SlideOutDirDirective implements OnInit {
-  templateView!: EmbeddedViewRef<any>;
+export class SlideOutDirDirective implements AfterViewInit {
+  slideOutComponent!: ComponentRef<SlideInComponent>;
 
   constructor(
     private viewContainer: ViewContainerRef,
     private templateRef: TemplateRef<any>
   ) {}
 
-  ngOnInit() {
-    // const container = this.viewContainer.detach();
-    // this.viewContainer.createComponent<SlideInComponent>(SlideInComponent);
-    // const oldView = this.viewContainer.detach();
-    // console.log('oldView', oldView);
-    // this.viewContainer.clear();
-    // const slideOut =
-    //   this.viewContainer.createComponent<SlideInComponent>(SlideInComponent);
-
-    const slideOutComponent =
+  ngAfterViewInit(): void {
+    this.slideOutComponent =
       this.viewContainer.createComponent<SlideInComponent>(SlideInComponent);
-    slideOutComponent.instance.viewContainer.clear();
-    slideOutComponent.instance.viewContainer.createEmbeddedView(
-      this.templateRef
-    );
-    // const slideContainerRef = slideOutComponent.injector.get(ViewContainerRef);
-    // slideContainerRef.createEmbeddedView(this.templateRef);
+    this.slideOutComponent.instance.innerTemplate = this.templateRef;
+  }
+
+  @Input() set appSlideOutDir(show: boolean) {
+    this.slideOutComponent.instance.show = show;
   }
 }
-
-// ngAfterContentInit(): void {
-//   // console.log('template', this.templateRef);
-//   // const oldView = this.viewContainer.detach();
-//   // this.viewContainer.clear();
-//   // const slideOut =
-//   //   this.viewContainer.createComponent<SlideInComponent>(SlideInComponent);
-// }

@@ -6,9 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  show = false;
+  show1 = false;
+  show2 = false;
 
-  toggle() {
-    this.show = !this.show;
+  toggle1() {
+    this.show1 = !this.show1;
+  }
+
+  toggle2() {
+    this.show2 = !this.show2;
   }
 }

@@ -1,7 +1,10 @@
-<button (click)="toggle()">Toggle Slide-Out</button>
+<button (click)="toggle1()">Toggle 1 Slide-Out</button>
+<button (click)="toggle2()">Toggle 2 Slide-Out</button>
 
-<app-slide-in [show]="show">
+<app-slide-in [show]="show1">
   <div class="box">Hey there! Care to slide out?</div>
 </app-slide-in>
 
-<div *appSlideOutDir class="box">Hey there! Care to slide out AGAIN??</div>
+<div *appSlideOutDir="show2" class="box">
+  Hey there! Care to slide out AGAIN??
+</div>

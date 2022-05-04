@@ -1,4 +1,10 @@
-import { Component, Input, OnInit, ViewContainerRef } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  TemplateRef,
+  ViewContainerRef,
+} from '@angular/core';
 
 @Component({
   selector: 'app-slide-in',
@@ -10,4 +16,7 @@ export class SlideInComponent {
 
   @Input()
   show = false;
+
+  @Input()
+  innerTemplate!: TemplateRef<any>;
 }
